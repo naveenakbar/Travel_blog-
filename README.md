@@ -1,21 +1,21 @@
 
 A web application designed to document travel experiences with a focus on visual storytelling and data persistence.
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
 
 * **Typography:** Inter (for high legibility).
-* **Palette:** Earthy greens (`#4A5D4E`) and organic tones to reflect sustainability.
+* **Palette:** Earthy greens (`#4A5D4E`) and organic tones.
 * **UI/UX:** Responsive card-based layout with full-bleed imagery and vertical image stacking.
 
-## 🚀 Technical Features
+## Technical Features
 
 * **Smart Concatenation:** An "Append-only" edit feature that allows adding new memories to existing posts without overwriting historical data.
 * **Data Persistence:** Uses a JSON-based flat-file database system to store post metadata and image paths.
 * **Image Processing:** Integrated with **Multer** for multi-part form data and automated file naming using Unix timestamps.
 * **RESTful CRUD:** Full Create, Read, Update, and Delete functionality built with Express.js.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Backend:** Node.js, Express.js
 * **Frontend:** EJS (Embedded JavaScript Templates), CSS3 (Flexbox/Grid)
