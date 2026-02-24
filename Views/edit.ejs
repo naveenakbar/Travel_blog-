@@ -1,0 +1,22 @@
+<%- include('partials/header.ejs') %>
+
+  <section class="form-section">
+        <h2> Edit a Memory</h2>
+        <form action="/update/<%= post.id %>" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Name of the place" value="<%= post.title %>" required>
+            <input type="text" name="city" placeholder="city" value="<%= post.city %>" required>
+            <input type="text" name="people" placeholder="People who went with you" value="<%= post.people %>">
+            <input type="text" name="year" placeholder="In what year or month did you go there?" value="<%= post.year %>">  
+            <textarea name="content" placeholder="Memory details..." required><%= post.content %></textarea>
+            <input type="file" name="image" accept="image/*" multiple>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>

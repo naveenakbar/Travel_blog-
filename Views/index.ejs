@@ -1,0 +1,59 @@
+<%- include('partials/header.ejs') %>
+
+<main>
+    <h1>Places I Have been in Turkey</h1>
+    <section class="form-section">
+        <h2> Add a Memory</h2>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Name of the place" required>
+            <input type="text" name="city" placeholder="city" required>
+            <input type="text" name="people" placeholder="People who went with you">
+            <input type="text" name="year" placeholder="In what year or month did you go there?">
+            <textarea name="content" placeholder="Memory details..." required></textarea>
+            <input type="file" name="image" accept="image/*" multiple>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section class="posts-section">
+        <h2> My Travel Gallery</h2>
+        <div class="all_posts">
+            <% if(locals.posts && posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                    <div class="post-card">
+                        <img src="<%= post.images[0] %>" alt="Cover" class="cover-photo">
+                         <% if(post.images.length > 1) { %>
+                                <div class="thumbnail-grid">
+                                    <% post.images.slice(1).forEach(img => { %>
+                                        <img src="<%= img %>" class="thumbnail">
+                                    <% }) %>
+                                </div>
+                            <% } %>
+                        <div class="post-card-content">
+                           
+                        <div class="button-group">
+                          <form action="/delete/<%=post.id%>" method="POST">
+                            <button type="submit" class="delete-button">Delete</button>
+                          </form>
+                          <form action="/edit/<%=post.id%>" method="GET">
+                            <button type="submit" class="edit-button">Edit</button>
+                          </form>
+                        </div>
+                            <h3>Name: <%= post.title %></h3>
+                            <p><strong>City: <%= post.city %></strong></p>
+                            <p>Memory: <%= post.content %></p>
+                            <small>People who went with you: <%= post.people %></small>
+                            <small>Year: <%= post.year %></small>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="no-posts">
+                    <p>No memories yet! Add one above!</p>
+                </div> 
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include('partials/footer.ejs') %>
